@@ -1,0 +1,31 @@
+Class documentation
+<---- javadoc command: ---->
+C:\Program Files\BlueJ\jdk\bin\javadoc.exe
+-author
+-version
+-nodeprecated
+-package
+-Xdoclint:none
+-noindex
+-notree
+-nohelp
+-nonavbar
+-source
+11
+-classpath
+C:\Program Files\BlueJ\lib\bluejcore.jar;C:\Program Files\BlueJ\lib\junit-4.11.jar;C:\Program Files\BlueJ\lib\hamcrest-core-1.3.jar;C:\Program Files\BlueJ\lib\lang-stride.jar;C:\Program Files\BlueJ\lib\javafx\lib\javafx.base.jar;C:\Program Files\BlueJ\lib\javafx\lib\javafx.controls.jar;C:\Program Files\BlueJ\lib\javafx\lib\javafx.fxml.jar;C:\Program Files\BlueJ\lib\javafx\lib\javafx.graphics.jar;C:\Program Files\BlueJ\lib\javafx\lib\javafx.media.jar;C:\Program Files\BlueJ\lib\javafx\lib\javafx.properties.jar;C:\Program Files\BlueJ\lib\javafx\lib\javafx.swing.jar;C:\Program Files\BlueJ\lib\javafx\lib\javafx.web.jar;C:\Users\HP i5\Documents\GitHub\PROG5001A2
+-d
+C:\Users\HP i5\Documents\GitHub\PROG5001A2\doc
+-encoding
+UTF-8
+-charset
+UTF-8
+C:\Users\HP i5\Documents\GitHub\PROG5001A2\SnakeGame.java
+<---- end of javadoc command ---->
+Loading source file C:\Users\HP i5\Documents\GitHub\PROG5001A2\SnakeGame.java...
+Constructing Javadoc information...
+C:\Users\HP i5\Documents\GitHub\PROG5001A2\SnakeGame.java:3: error: cannot find symbol
+public class SnakeGame extends JFrame {
+                               ^
+  symbol: class JFrame
+1 error

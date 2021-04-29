@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=AM_login_form
+comment0.text=\r\n\ This\ program\ demonstrates\ how\ to\ use\ JFrame\ and\ LayoutManager.\r\n\ @author\ Vinh\ Bui\r\n
+comment1.params=
+comment1.target=AM_login_form()
+comment2.params=e
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.params=fileName
+comment3.target=void\ readPlayerFromFile(java.lang.String)
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+comment5.params=
+comment5.target=void\ run()
+numComments=6
