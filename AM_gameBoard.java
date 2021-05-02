@@ -7,7 +7,7 @@ public class AM_gameBoard extends JPanel {
     int xcells = 30;   
     int ycells = 30;
     int szcell = 10;       
-       
+    //This method create game board with black back ground colour   
     public AM_gameBoard() {
         setPreferredSize(new Dimension(xcells * szcell, ycells * szcell));        
         setBackground(Color.black);
@@ -19,4 +19,17 @@ public class AM_gameBoard extends JPanel {
         super.paintComponent(g);
     }
     
+}
+abstract class gameBoard {
+    int size;
+    int speed;
+     void run(){
+        }
+    
+     void stop(){
+        }
+    // Below method display name of the game
+    void printgameboard(){
+        System.out.println ("This is a snack Game");
+    }
 }

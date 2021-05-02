@@ -4,7 +4,7 @@
  * @author 
  * @version
  */
-public class AM_prey {
+public class AM_prey  {
     /**
      * Constructor for objects of class AM_prey
      */

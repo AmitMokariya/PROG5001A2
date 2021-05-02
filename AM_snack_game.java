@@ -3,6 +3,7 @@ import java.lang.String;
 import javax.swing.JFrame;
 public class AM_snack_game extends JFrame {
 
+    
     public AM_snack_game(String gameTille) {        
         setTitle(gameTille);
         setResizable(false);
@@ -19,3 +20,30 @@ public class AM_snack_game extends JFrame {
         });
     }
 }
+class snack extends gameBoard{
+     void run(){
+         start_play();
+         stop_play();
+         System.out.println("Snack runs"); 
+        }
+     void stop(){
+         System.out.println("Snack stops");
+        }
+        
+     private void start_play() {
+            }
+            
+     private void stop_play(){
+        }
+        
+     void turnright() {
+         
+     
+       }
+       
+     void turnleft() {
+         
+        }
+        
+    }
+    
