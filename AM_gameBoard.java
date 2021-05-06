@@ -2,8 +2,31 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
 
-public class AM_gameBoard extends JPanel {    
+public class AM_gameBoard extends JPanel 
+{     
+ 
+  public void paintComponent(Graphics g){
+      setBackground(Color.black);
+    }
+  public void paintComponent1(Graphics g) {
+    g.setColor(Color.black);
+    g.fillRect(0, 0, getWidth(), getHeight());
+    g.setColor(Color.red);
+    g.fillOval(getWidth()/4, getHeight()/4, getWidth()/2, getHeight()/2);
+  }
+  public static void main(String args[]) {
+    JFrame frame = new JFrame("OvalPaint");
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    OvalPaint panel = new OvalPaint();
+    
+    frame.add(panel);
+    frame.setSize(300, 200);
+    frame.setVisible(true);
+  
+}
     int xcells = 30;   
     int ycells = 30;
     int szcell = 10;       
@@ -14,12 +37,17 @@ public class AM_gameBoard extends JPanel {
         setFocusable(true);        
     }
 
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-    }
+   // @Override
+    //public void paintComponent(Graphics g) {
+   //     super.paintComponent(g);
+    //}
     
 }
+    
+
+    
+ 
+   
 abstract class gameBoard {
     int size;
     int speed;
