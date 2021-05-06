@@ -2,10 +2,9 @@
 comment0.target=AM_gameBoard
 comment1.params=g
 comment1.target=void\ paintComponent(java.awt.Graphics)
-comment2.params=g
-comment2.target=void\ paintComponent1(java.awt.Graphics)
-comment3.params=args
-comment3.target=void\ main(java.lang.String[])
-comment4.params=
-comment4.target=AM_gameBoard()
-numComments=5
+comment1.text=\ public\ void\ paintComponent(Graphics\ g){\r\n\ \ \ \ \ \ setBackground(Color.black);\r\n\ \ \ \ \ \ repaint();\r\n}
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+comment3.params=
+comment3.target=AM_gameBoard()
+numComments=4

@@ -1,8 +1,8 @@
 /**
  * Write a description of class AM_player here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Amit mokariya)
+ * @version (1.0)
  */
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -48,6 +48,7 @@ public class AM_playerList
         }
     }
 
+
     /**
      * Method to match a AM_player in the list with a given name and password
      * @param name, password
@@ -82,8 +83,9 @@ public class AM_playerList
         for (int i = 0; i < AM_playerList.size(); i++) {
             AM_player AM_player = AM_playerList.get(i);
                 s = s + AM_player.toString() + "\n";
-        }
-        */
+            }*/
+        
+       
         Iterator<AM_player> iter = AM_playerList.iterator();
         while (iter.hasNext()) {
             AM_player AM_player = iter.next();
@@ -98,12 +100,12 @@ public class AM_playerList
     class AM_player implements Comparable<AM_player> {
         public String name;
         public String password;
-        
+    
         public AM_player(String name, String password) {
             this.name = name;
             this.password = password;
         }
-        
+      
         @Override
         public String toString() {
             return name + "[pass=" + password + "]";
@@ -114,4 +116,29 @@ public class AM_playerList
             return this.name.compareTo(p.name);
         }
     }
+    /**
+ * player list 
+ */
+public static void main(String[] args) {
+    AM_player playerList = new AM_player();
+        playerList.add("Amit","5@5");
+        playerList.add("Vinh","1@2");
+        playerList.add("Atie","2@3");
+        playerList.add("Raina","4@5");
+        playerList.add("carolyn","0@5");
+    //before short
+System.out.println("List before sorting: \n" + playerList);
+playerList.sort('D');
+if (playerList.matchPlayer("Vinh","1@2")) {
+    System.out.println("matched a player \n");
+} else {
+    System.out.println("Not found matching player \n");
 }
+//after short
+System.out.println("List after sorting: \n" + playerList);
+
+    }
+}
+ 
+
+

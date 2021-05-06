@@ -8,22 +8,24 @@ import javax.swing.*;
 public class AM_gameBoard extends JPanel 
 {     
  
-  public void paintComponent(Graphics g){
+  /* public void paintComponent(Graphics g){
       setBackground(Color.black);
-    }
-  public void paintComponent1(Graphics g) {
+      repaint();
+    }*/
+  public void paintComponent(Graphics g) {
     g.setColor(Color.black);
-    g.fillRect(0, 0, getWidth(), getHeight());
-    g.setColor(Color.red);
-    g.fillOval(getWidth()/4, getHeight()/4, getWidth()/2, getHeight()/2);
+    g.fillRect(1,0, getWidth(), getHeight());
+    //g.setColor(Color.black);
+    //g.fillOval(getWidth()/2, getHeight()/2, getWidth()/2, getHeight()/2);
   }
+  
   public static void main(String args[]) {
     JFrame frame = new JFrame("OvalPaint");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    OvalPaint panel = new OvalPaint();
+    AM_gameBoard panel = new AM_gameBoard();
     
     frame.add(panel);
-    frame.setSize(300, 200);
+    frame.setSize(200, 200);
     frame.setVisible(true);
   
 }
