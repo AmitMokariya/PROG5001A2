@@ -1,16 +1,40 @@
 /**
  * Write a description of class AM_snake here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Amit gopal mokariya)
+ * @version (1.0)
+ * 23/05/2019
  */
-public class AM_snake
-{
-    /**
-     * Constructor for objects of class AM_snake
-     */
-    public AM_snake() {
-        // initialise instance variables        
-    }
+import java.awt.EventQueue;
+import javax.swing.JFrame;
 
+public class AM_Snake extends JFrame {
+      
+        public AM_Snake() {
+            
+        initUI();
+    }
+    
+    private void initUI() {
+        
+        add(new AM_GameBoard());
+        
+        setResizable(false);
+        pack();
+        
+        setTitle("Snake");
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
+   
+     
+    public static void main(String[] args) {
+        
+        EventQueue.invokeLater(() -> {
+            JFrame ex = new AM_Snake();
+            ex.setVisible(true);
+        });
+    }
 }
+

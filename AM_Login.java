@@ -19,21 +19,23 @@ import java.io.FileNotFoundException;
  * @author Amit mokariya
  */
 
-public class AM_login_form extends JFrame /** implements ActionListener **/{
+public class AM_Login extends JFrame /** implements ActionListener **/{
     private JLabel labelUsername;
     private JLabel labelPassword;   
     private JTextField textUsername;
     private JPasswordField fieldPassword;
     private JButton buttonLogin;
-    //private AM_playerList playerList;
+    private AM_PlayerList playerList;
  
-    public AM_login_form() {
+    public AM_Login() {
         super("Login Form");
+        //setdefaultCloseOperation(EXIT_ON_CLOSE);
         labelUsername = new JLabel("Enter username: ");
         labelPassword = new JLabel("Enter password: ");   
         textUsername = new JTextField(20);
         fieldPassword = new JPasswordField(20);
         buttonLogin = new JButton("Login");
+        
         
         // create a new panel with GridBagLayout manager
         JPanel panelLogin = new JPanel(new GridBagLayout());
@@ -76,18 +78,22 @@ public class AM_login_form extends JFrame /** implements ActionListener **/{
         //buttonLogin.addActionListener(this);
         
         //instantiate the playerList
-         playerList = new AM_playerList();
-        try {
-            readPlayerFromFile("players.txt");
-        } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(this, "File Not Found");
-        }
+        
     }
-    
-    public void actionPerformed(ActionEvent e) {
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new AM_Login().setVisible(true);
+            }
+        });
+    }
+    public void actionPerformed (ActionEvent e) {
         String username = textUsername.getText();
         String password = fieldPassword.getText();
-        if (playerList.matchPlayer(username, password)) {
+        
+        if (playerList.matchPlayer(username,password)) 
+        {
             JOptionPane.showMessageDialog(this, username + ": login successfully");
         } else {
             JOptionPane.showMessageDialog(this, "wrong username or password");
@@ -107,17 +113,9 @@ public class AM_login_form extends JFrame /** implements ActionListener **/{
             Scanner uscanner = new Scanner(line);
             String username = uscanner.next();
             String password = uscanner.next(); 
-            playerList.add(username, password);
-            //JOptionPane.showMessageDialog(this, username + ": " + password);
+            //AM_playerList.add(username, password);
+            JOptionPane.showMessageDialog(this, username + ": " + password);
         }      
     }
     
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new AM_login_form().setVisible(true);
-            }
-        });
-    }
 }

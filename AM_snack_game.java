@@ -1,7 +1,11 @@
 import java.awt.EventQueue;
 import java.lang.String;
 import javax.swing.JFrame;
+import java.awt.*;  
+import javax.swing.*; 
+
 public class AM_snack_game extends JFrame {
+    
 
     
     public AM_snack_game(String gameTille) {        
@@ -20,7 +24,20 @@ public class AM_snack_game extends JFrame {
         });
     }
 }
-class snack extends gameBoard{
+
+class Border {  
+JFrame f;  
+Border(){  
+    f=new JFrame();         
+    f.setSize(500,300);  
+    f.setVisible(true);  
+}  
+public static void main(String[] args) {  
+    new Border();  
+}  
+
+}  
+/*class snack extends gameBoard{
      void run(){
          start_play();
          stop_play();
@@ -43,7 +60,8 @@ class snack extends gameBoard{
        
      void turnleft() {
          
-        }
+        }*/
         
-    }
+    
+
     
