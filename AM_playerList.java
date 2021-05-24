@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Collections;
 import java.awt.event.*;
-import java.util.Scanner;
+import java.io.PrintWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import javax.swing.JOptionPane;
@@ -42,12 +42,11 @@ public class AM_PlayerList
 public AM_PlayerList() {
         // initialise the AM_player list
         playerList = new ArrayList<>();
-         /*AM_PlayerList playerList = new AM_PlayerList();
         try {
             readPlayerFromFile("players.txt");
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(this, "File Not Found");
-        }*/
+            //JOptionPane.showMessageDialog(this, "File Not Found");
+        }
     }
  
 /**
@@ -59,6 +58,48 @@ public void add(String name, String password) {
         Player player = new Player(name, password);
         playerList.add(player);
 }
+
+public void register(String name, String password) {
+        Player player = new Player(name, password);
+        playerList.add(player);
+        try{
+        savePlayersToFile("players.txt");
+    }catch(Exception e){}
+}
+
+private void readPlayerFromFile(String fileName) throws FileNotFoundException{
+        File file = new File(fileName);
+     
+        //Creating Scanner instnace to read File in Java
+        Scanner scnr = new Scanner(file);
+     
+        //Reading each line of file using Scanner class
+        while(scnr.hasNextLine()){
+            String line = scnr.nextLine();
+            Scanner uscanner = new Scanner(line);
+            String username = uscanner.next();
+            String password = uscanner.next(); 
+            add(username, password);
+            //JOptionPane.showMessageDialog(this, username + ": " + password);
+        }      
+    }
+
+    
+private void savePlayersToFile(String fileName) throws FileNotFoundException{
+        File file = new File(fileName);
+     
+        PrintWriter writer = new PrintWriter(file);
+     
+        Iterator<Player> iter = playerList.iterator();
+        while(iter.hasNext())
+        {
+            Player p = iter.next();
+            writer.println(p.name+" "+p.password);
+        }
+        writer.close();
+    }    
+    
+
 
 /**
      * Method to sort a player

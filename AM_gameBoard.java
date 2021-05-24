@@ -15,47 +15,22 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
+import java.awt.event.*;
 
 public class AM_GameBoard extends JPanel implements ActionListener
 
 {     
  
  
-  public void paintComponent(Graphics g) {
-    g.setColor(Color.black);
-    g.fillRect(0,0, getWidth(), getHeight());
-    //g.setColor(Color.black);
-    //g.fillOval(getWidth()/2, getHeight()/2, getWidth()/2, getHeight()/2);
-  }
-  
-  public static void main(String args[]) {
-    JFrame frame = new JFrame("OvalPaint");
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    AM_GameBoard panel = new AM_GameBoard();
     
-    frame.add(panel);
-    frame.setSize(800, 600);
-    frame.setVisible(true);
-  
-}
     int xcells = 30;   
     int ycells = 30;
-    int szcell = 10;       
-      
-    
-
-   // @Override
-    //public void paintComponent(Graphics g) {
-   //     super.paintComponent(g);
-    //}
-    
 
 
-
-    private final int B_WIDTH = 300;
-    private final int B_HEIGHT = 300;
     private final int DOT_SIZE = 10;
-    private final int ALL_DOTS = 900;
+    private final int B_WIDTH = DOT_SIZE*xcells;
+    private final int B_HEIGHT = DOT_SIZE*ycells;
+    private final int ALL_DOTS = xcells * ycells;
     private final int RAND_POS = 29;
     private final int DELAY = 140;
 
@@ -77,8 +52,12 @@ public class AM_GameBoard extends JPanel implements ActionListener
     private Image apple;
     private Image head;
 
-    public AM_GameBoard() {
+    ScoreListener scoreListener;
+    int score=0;
+    
+    public AM_GameBoard(ScoreListener scoreListener) {
         //This method create game board with black back ground colour and load image
+        this.scoreListener = scoreListener;
         addKeyListener(new TAdapter());
         setBackground(Color.black);
         setFocusable(true);
@@ -86,26 +65,44 @@ public class AM_GameBoard extends JPanel implements ActionListener
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
         loadImages();
         initGame();
+        
+        
+        addMouseListener(new MouseAdapter(){
+            public void mouseClicked(MouseEvent arg0) {
+                if(!inGame)
+                {
+                    initGame();
+                }
+            }
+        });
     }
     
     private void loadImages() {
 
         ImageIcon iid = new ImageIcon("resources/dot.png");
         ball = iid.getImage();
+        ball = ball.getScaledInstance(DOT_SIZE, DOT_SIZE, Image.SCALE_DEFAULT);
 
         ImageIcon iia = new ImageIcon("resources/apple.png");
         apple = iia.getImage();
+        apple = apple.getScaledInstance(DOT_SIZE, DOT_SIZE, Image.SCALE_DEFAULT);
 
         ImageIcon iih = new ImageIcon("resources/head.png");
         head = iih.getImage();
+        head = head.getScaledInstance(DOT_SIZE, DOT_SIZE, Image.SCALE_DEFAULT);
     }
 
     private void initGame() {
 
+        leftDirection = false;
+        rightDirection = true;
+        upDirection = false;
+        downDirection = false;
+        inGame = true;
         dots = 3;
-
+        scoreListener.scoreUpdate(0);
         for (int z = 0; z < dots; z++) {
-            x[z] = 50 - z * 10;
+            x[z] = 50 - z * DOT_SIZE;
             y[z] = 50;
         }
 
@@ -114,10 +111,19 @@ public class AM_GameBoard extends JPanel implements ActionListener
         timer = new Timer(DELAY, this);
         timer.start();
     }
-    /*@Override
+    
+    /*public void paintComponent(Graphics g) {
+    g.setColor(Color.black);
+    g.fillRect(0,0, getWidth(), getHeight());
+    //g.setColor(Color.black);
+    //g.fillOval(getWidth()/2, getHeight()/2, getWidth()/2, getHeight()/2);
+  }*/
+    
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
+        g.setColor(Color.black);
+        g.fillRect(0,0, getWidth(), getHeight());
         doDrawing(g);
     }
     
@@ -141,23 +147,27 @@ public class AM_GameBoard extends JPanel implements ActionListener
 
             gameOver(g);
         }        
-    }*/
+    }
     
     private void gameOver(Graphics g) {
         
-        String msg = "Game Over";
+        String msg = "GAME OVER";
         Font small = new Font("Arial", Font.BOLD, 14);
         FontMetrics metr = getFontMetrics(small);
 
         g.setColor(Color.white);
         g.setFont(small);
         g.drawString(msg, (B_WIDTH - metr.stringWidth(msg)) / 2, B_HEIGHT / 2);
+        msg = "CLICK TO PLAY";
+        g.drawString(msg, (B_WIDTH - metr.stringWidth(msg)) / 2, B_HEIGHT / 2+metr.getHeight());
+        scoreListener.gameOver(score);
     }
     
     private void checkApple() {
 
         if ((x[0] == apple_x) && (y[0] == apple_y)) {
-
+            score++;
+            scoreListener.scoreUpdate(score);
             dots++;
             locateApple();
         }
@@ -269,4 +279,22 @@ public class AM_GameBoard extends JPanel implements ActionListener
         }
         
     }
+    
+    public static void main(String args[]) {
+    JFrame frame = new JFrame("OvalPaint");
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    AM_GameBoard panel = new AM_GameBoard(new ScoreListener(){
+        public void scoreUpdate(int score)
+        {
+        }
+        public void gameOver(int score)
+        {
+        }
+    });
+    
+    frame.add(panel);
+    frame.setSize(300, 300);
+    frame.setVisible(true);
+  
+}
 }

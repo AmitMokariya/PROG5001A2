@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=ScoreListener
+comment1.params=score
+comment1.target=void\ scoreUpdate(int)
+comment2.params=score
+comment2.target=void\ gameOver(int)
+numComments=3

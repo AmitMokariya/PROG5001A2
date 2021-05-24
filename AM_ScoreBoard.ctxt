@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.params=
+comment0.target=AM_ScoreBoard()
+comment0.text=\ Constructor\ for\ object\ of\ class\ player\ \ \ \r\n\ \r\n
+comment1.params=name\ score
+comment1.target=void\ add(java.lang.String,\ java.lang.String)
+comment1.text=\r\n\ Method\ to\ add\ a\ AM_player\r\n\ @params\ name,\ password\r\n\ @return\ none\r\n
+comment2.params=name\ score
+comment2.target=void\ updateScore(java.lang.String,\ java.lang.String)
+comment3.params=
+comment3.target=java.lang.String\ getHighestScore()
+comment4.params=fileName
+comment4.target=void\ readScoresFromFile(java.lang.String)
+comment5.params=fileName
+comment5.target=void\ saveScoresToFile(java.lang.String)
+comment6.params=direction
+comment6.target=void\ sort(char)
+comment6.text=\r\n\ Method\ to\ sort\ a\ player\r\n\ @params\ direction\ (A\ -\ Acsending\ order,\ D\ -\ Descending\ order)\r\n\ @return\ none\r\n
+comment7.params=
+comment7.target=java.lang.String\ toString()
+comment7.text=\r\n\ Method\ to\ convert\ the\ playerList\ to\ a\ string\r\n\ @params\ none\r\n\ @return\ a\ string\ that\ represents\ all\ AM_players\ in\ the\ list\r\n
+comment8.params=args
+comment8.target=void\ main(java.lang.String[])
+comment8.text=\r\n\ \r\n
+numComments=9

@@ -1,3 +1,4 @@
+import java.awt.EventQueue;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -19,13 +20,14 @@ import java.io.FileNotFoundException;
  * @author Amit mokariya
  */
 
-public class AM_Login extends JFrame /** implements ActionListener **/{
+public class AM_Login extends JFrame implements ActionListener{
     private JLabel labelUsername;
     private JLabel labelPassword;   
     private JTextField textUsername;
     private JPasswordField fieldPassword;
     private JButton buttonLogin;
-    private AM_PlayerList playerList;
+    private JButton buttonRegister;
+    private AM_PlayerList AM_playerList;
  
     public AM_Login() {
         super("Login Form");
@@ -35,7 +37,7 @@ public class AM_Login extends JFrame /** implements ActionListener **/{
         textUsername = new JTextField(20);
         fieldPassword = new JPasswordField(20);
         buttonLogin = new JButton("Login");
-        
+        buttonRegister = new JButton("Register");
         
         // create a new panel with GridBagLayout manager
         JPanel panelLogin = new JPanel(new GridBagLayout());
@@ -62,10 +64,13 @@ public class AM_Login extends JFrame /** implements ActionListener **/{
          
         constraints.gridx = 0;
         constraints.gridy = 2;
-        constraints.gridwidth = 2;
-        constraints.anchor = GridBagConstraints.CENTER;
-        panelLogin.add(buttonLogin, constraints);
+        panelLogin.add(buttonRegister, constraints);
+
+        
                   
+        constraints.gridx = 1;
+        panelLogin.add(buttonLogin, constraints);
+        
         // add the panel to this frame
         add(panelLogin);
          
@@ -75,10 +80,20 @@ public class AM_Login extends JFrame /** implements ActionListener **/{
         setLocationRelativeTo(null);
         
         //add ActionListener to the button
-        //buttonLogin.addActionListener(this);
+        buttonLogin.addActionListener(this);
+        buttonRegister.addActionListener(new ActionListener(){
+                    
+            public void actionPerformed (ActionEvent e) {
+                String username = textUsername.getText();
+                String password = fieldPassword.getText();
+                AM_playerList.register(username,password);
+                JOptionPane.showMessageDialog(AM_Login.this, "User registered successfully.");
+                
+            }
+        });
         
         //instantiate the playerList
-        
+        AM_playerList = new AM_PlayerList();
     }
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -92,30 +107,20 @@ public class AM_Login extends JFrame /** implements ActionListener **/{
         String username = textUsername.getText();
         String password = fieldPassword.getText();
         
-        if (playerList.matchPlayer(username,password)) 
+        if (AM_playerList.matchPlayer(username,password)) 
         {
-            JOptionPane.showMessageDialog(this, username + ": login successfully");
+            //JOptionPane.showMessageDialog(this, username + ": login successfully");
+            EventQueue.invokeLater(() -> {
+            JFrame ex = new AM_Snake(username);
+            ex.setVisible(true);
+        });
+            
         } else {
             JOptionPane.showMessageDialog(this, "wrong username or password");
         }
 
     }
     
-    private void readPlayerFromFile(String fileName) throws FileNotFoundException{
-        File file = new File(fileName);
-     
-        //Creating Scanner instnace to read File in Java
-        Scanner scnr = new Scanner(file);
-     
-        //Reading each line of file using Scanner class
-        while(scnr.hasNextLine()){
-            String line = scnr.nextLine();
-            Scanner uscanner = new Scanner(line);
-            String username = uscanner.next();
-            String password = uscanner.next(); 
-            //AM_playerList.add(username, password);
-            JOptionPane.showMessageDialog(this, username + ": " + password);
-        }      
-    }
+    
     
 }

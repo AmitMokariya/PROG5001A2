@@ -6,7 +6,6 @@ import javax.swing.*;
 
 public class AM_snack_game extends JFrame {
     
-
     
     public AM_snack_game(String gameTille) {        
         setTitle(gameTille);
