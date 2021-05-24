@@ -76,6 +76,8 @@ private void readPlayerFromFile(String fileName) throws FileNotFoundException{
         //Reading each line of file using Scanner class
         while(scnr.hasNextLine()){
             String line = scnr.nextLine();
+            if(line.length()==0)
+            continue;
             Scanner uscanner = new Scanner(line);
             String username = uscanner.next();
             String password = uscanner.next(); 
