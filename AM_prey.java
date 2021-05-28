@@ -4,11 +4,11 @@
  * @author 
  * @version
  */
-public class AM_prey  {
+public class AM_Prey  {
     /**
      * Constructor for objects of class AM_prey
      */
-    public AM_prey()
+    public AM_Prey()
     {
     }    
 }

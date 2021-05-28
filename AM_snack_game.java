@@ -4,10 +4,10 @@ import javax.swing.JFrame;
 import java.awt.*;  
 import javax.swing.*; 
 
-public class AM_snack_game extends JFrame {
+public class AM_Snack_Game extends JFrame {
     
     
-    public AM_snack_game(String gameTille) {        
+    public AM_Snack_Game(String gameTille) {        
         setTitle(gameTille);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -18,7 +18,7 @@ public class AM_snack_game extends JFrame {
     public static void main(String[] args) {        
         EventQueue.invokeLater(() -> {
             //create the game with a game title as follow: The Snake Game (C) Your_Name
-            JFrame sgame = new AM_snack_game("");
+            JFrame sgame = new AM_Snack_Game("");
             sgame.setVisible(true);
         });
     }
